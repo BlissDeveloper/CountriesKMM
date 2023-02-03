@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
 }
 
 kotlin {
@@ -30,14 +31,15 @@ kotlin {
                 implementation("io.insert-koin:koin-test:$koin")
                 implementation("io.insert-koin:koin-android:$koin")
 
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
+               implementation("io.ktor:ktor-client-core:$ktorVersion")
 
-                val koinKtor = "2.0.1"
-                implementation("io.insert-koin:koin-ktor:$koinKtor")
-                implementation("io.insert-koin:koin-logger-slf4j:$koinKtor")
-
-                //Coroutines
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+
+                implementation("io.ktor:ktor-client-auth:2.2.3")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             }
         }
         val commonTest by getting {
